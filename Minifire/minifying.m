@@ -87,23 +87,24 @@
     [spinner startAnimation:self];
     
     [self saveSettings];
+
         
 	for (int i=0;i<[arr count];i++)
 	{
 		if ([[[arr objectAtIndex:i] pathExtension] caseInsensitiveCompare:@"js"] == NSOrderedSame ||
             [[[arr objectAtIndex:i] pathExtension] caseInsensitiveCompare:@"css"] == NSOrderedSame)
 		{
-			YUICompressor = [[NSTask alloc] init];
-			[YUICompressor setLaunchPath: @"/usr/bin/java"];
+            YUICompressor = [[NSTask alloc] init];
+            [YUICompressor setLaunchPath: @"/usr/bin/java"];
             [YUICompressor setArguments:[NSArray arrayWithObjects:@"-jar",[[NSBundle mainBundle] pathForResource:@"yuicompressor" ofType:@"jar"],[arr objectAtIndex:i],@"-o",[self getOutputFilename:[arr objectAtIndex:i]],nil]];
 			[YUICompressor launch];
-			[YUICompressor release];
+            [YUICompressor waitUntilExit];
+            [YUICompressor release];
 		}
 	}
-    
     [spinner stopAnimation:self];
     [spinner setHidden:YES];
-	
+
 	NSBeginAlertSheet(
 					  @"Success!",
 					  // sheet message
