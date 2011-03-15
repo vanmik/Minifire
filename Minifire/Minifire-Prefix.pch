@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Minifire' target in the 'Minifire' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
