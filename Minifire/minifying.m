@@ -50,12 +50,24 @@
 		[outputDir selectItemWithTitle:@"same folder as source"];
         [self saveSettings];
 	}
+
+	bool combineFilesCheck = [[NSUserDefaults standardUserDefaults] boolForKey:@"combineFiles"];
+	
+	if (combineFilesCheck) {
+		[combineFiles setState:combineFilesCheck];
+	}
+	else {
+		[combineFiles setState:0];
+		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"combineFiles"];
+	}
 }
 
 -(void)saveSettings
 {
     [[NSUserDefaults standardUserDefaults] setObject:[fileEnding stringValue] forKey:@"fileEnding"];
     [[NSUserDefaults standardUserDefaults] setObject:[outputDir titleOfSelectedItem] forKey:@"outputDir"];
+    [[NSUserDefaults standardUserDefaults] setBool:[combineFiles state] forKey:@"combineFiles"];
+
 }
 
 //-------------
@@ -80,15 +92,83 @@
     }
 }
 
+-(void)combineFilesAndMinify:(NSArray *)arr{
+    
+    NSMutableArray *cssArray = [NSMutableArray new];
+    NSMutableArray *jsArray = [NSMutableArray new];
+    
+    for (int i=0;i<[arr count];i++){
+        if ([[[arr objectAtIndex:i] pathExtension] caseInsensitiveCompare:@"js"] == NSOrderedSame) {
+            [jsArray addObject:[arr objectAtIndex:i]];
+        }
+        else if([[[arr objectAtIndex:i] pathExtension] caseInsensitiveCompare:@"css"] == NSOrderedSame){
+            [cssArray addObject:[arr objectAtIndex:i]];
+        }
+        
+    }
+    
+    NSMutableArray *filesArray = [NSMutableArray arrayWithObjects:cssArray, jsArray, nil];
+    
+    for (int i=0; i < [filesArray count]; i++){
+        if (![[filesArray objectAtIndex:i] count]){
+            [filesArray removeObjectAtIndex:i];
+        }
+    }
+    
+    for (int i=0; i < [filesArray count]; i++){
+    
+        bool show;
+        
+        if (i == [filesArray count]-1) {
+            show = YES;
+        }else{
+            show = NO;
+        }
+        
+        if ([[filesArray objectAtIndex:i] count]) {
 
--(void)minifyFiles:(NSArray *)arr
+            if ([[filesArray objectAtIndex:i] count] > 1) {
+                
+                NSString *outputFolder = [[[filesArray objectAtIndex:i] objectAtIndex:0] stringByDeletingLastPathComponent];
+                
+                NSString *tempFileName = [NSString stringWithFormat:@"%@%@", @"combined.output.", [[[filesArray objectAtIndex:i] objectAtIndex:0] pathExtension]];
+                
+                NSString *tempFile = [outputFolder stringByAppendingPathComponent:tempFileName];
+
+                NSFileManager *FileManager = [[NSFileManager alloc] init];
+                
+                for (int y=0; y < [[filesArray objectAtIndex:i] count]; y++) {
+                    
+                    if(![FileManager fileExistsAtPath:tempFile]){
+                        [FileManager createFileAtPath:tempFile contents:NULL attributes:NULL];
+                    }
+                    
+                    NSFileHandle *handle = [NSFileHandle fileHandleForUpdatingAtPath:tempFile];
+                    [handle seekToEndOfFile];
+                    [handle writeData:[NSData dataWithContentsOfFile:[[[filesArray objectAtIndex:i] objectAtIndex:y] stringByStandardizingPath]]];
+                    [handle closeFile];
+                }
+
+                [self minifyFiles:[NSArray arrayWithObject:tempFile] showSuccess:show];
+        
+                
+                [FileManager removeItemAtPath:tempFile error:NULL];
+                [FileManager release];
+                
+            }
+            else if ([[filesArray objectAtIndex:i] count] == 1){
+                [self minifyFiles:[filesArray objectAtIndex:i] showSuccess:show];
+            }
+        }
+    }
+}
+
+
+-(void)minifyFiles:(NSArray *)arr showSuccess:(bool)showSheet
 {
     [spinner setHidden:NO];
     [spinner startAnimation:self];
     
-    [self saveSettings];
-
-        
 	for (int i=0;i<[arr count];i++)
 	{
 		if ([[[arr objectAtIndex:i] pathExtension] caseInsensitiveCompare:@"js"] == NSOrderedSame ||
@@ -102,23 +182,26 @@
             [YUICompressor release];
 		}
 	}
-    [spinner stopAnimation:self];
-    [spinner setHidden:YES];
+    
+    if (showSheet) {
+        [spinner stopAnimation:self];
+        [spinner setHidden:YES];
 
-	NSBeginAlertSheet(
-					  @"Success!",
-					  // sheet message
-					  @"OK",              // default button label
-					  nil,                // no third button
-					  nil,                // other button label
-					  window,         // window sheet is attached to
-					  self,               // we’ll be our own delegate
-					  nil,
-					  // did-end selector
-					  NULL,               // no need for did-dismiss selector
-					  window,         // context info
-					  @"Honey, i shrunk the files.");
-	
+        NSBeginAlertSheet(
+                          @"Success!",
+                          // sheet message
+                          @"OK",              // default button label
+                          nil,                // no third button
+                          nil,                // other button label
+                          window,         // window sheet is attached to
+                          self,               // we’ll be our own delegate
+                          nil,
+                          // did-end selector
+                          NULL,               // no need for did-dismiss selector
+                          window,         // context info
+                          @"Honey, i shrunk the files.");
+
+    }
 	
 }
 
@@ -127,19 +210,35 @@
 
 - (BOOL)application:(NSApplication *)sender openFiles:(NSArray *)path
 {
-	[self minifyFiles:path];
+    [self saveSettings];
+
+    bool combineFilesCheck = [[NSUserDefaults standardUserDefaults] boolForKey:@"combineFiles"];
+    if (combineFilesCheck) {
+        [self combineFilesAndMinify:path];
+    }
+    else{
+        [self minifyFiles:path showSuccess:YES];
+    }
 	return YES;
 }
 
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
-	
+    [self saveSettings];
+    
 	NSArray *draggedFilenames = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
 	
 	if ([[[draggedFilenames objectAtIndex:0] pathExtension] caseInsensitiveCompare:@"js"] == NSOrderedSame ||
         [[[draggedFilenames objectAtIndex:0] pathExtension] caseInsensitiveCompare:@"css"] == NSOrderedSame){
-		[self minifyFiles:draggedFilenames];
+        
+        bool combineFilesCheck = [[NSUserDefaults standardUserDefaults] boolForKey:@"combineFiles"];
+        if (combineFilesCheck) {
+            [self combineFilesAndMinify:draggedFilenames];
+        }
+        else{
+            [self minifyFiles:draggedFilenames showSuccess:YES];
+        }
 	}
     
 	

@@ -18,9 +18,10 @@
     //settings outlets
     IBOutlet NSTextField *fileEnding;
     IBOutlet NSPopUpButton *outputDir;
-    
+    IBOutlet NSButton *combineFiles;
     
     NSTask *YUICompressor;
+    NSTask *shell;
     bool highlight;
     
 }
@@ -29,6 +30,7 @@
 -(void)loadSettings;
 -(void)saveSettings;
 -(NSString *)getOutputFilename:(NSString *) origin;
+-(void)minifyFiles:(NSArray *)arr showSuccess:(bool)showSheet;
 
 
 @end
