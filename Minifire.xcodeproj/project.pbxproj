@@ -12,7 +12,7 @@
 		652482EB132E92EC009FA0A6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 652482E9132E92EC009FA0A6 /* Credits.rtf */; };
 		652482F1132E92EC009FA0A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652482EF132E92EC009FA0A6 /* MainMenu.xib */; };
 		652482FF132E955C009FA0A6 /* minifying.m in Sources */ = {isa = PBXBuildFile; fileRef = 652482FE132E955C009FA0A6 /* minifying.m */; };
-		658FA4EC132F348F00CB59F4 /* yuicompressor.jar in Resources */ = {isa = PBXBuildFile; fileRef = 658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */; };
+		658FA4EC132F348F00CB59F4 /* yuicompressor-2.4.7.jar in Resources */ = {isa = PBXBuildFile; fileRef = 658FA4D9132F2F7900CB59F4 /* yuicompressor-2.4.7.jar */; };
 		658FA504132F43EE00CB59F4 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 658FA503132F43EE00CB59F4 /* settings.png */; };
 		658FA51C132F706F00CB59F4 /* minifire.icns in Resources */ = {isa = PBXBuildFile; fileRef = 658FA51B132F706F00CB59F4 /* minifire.icns */; };
 /* End PBXBuildFile section */
@@ -31,7 +31,7 @@
 		652482F0132E92EC009FA0A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		652482FD132E955C009FA0A6 /* minifying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minifying.h; sourceTree = "<group>"; };
 		652482FE132E955C009FA0A6 /* minifying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = minifying.m; sourceTree = "<group>"; };
-		658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = yuicompressor.jar; sourceTree = "<group>"; };
+		658FA4D9132F2F7900CB59F4 /* yuicompressor-2.4.7.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "yuicompressor-2.4.7.jar"; sourceTree = "<group>"; };
 		658FA503132F43EE00CB59F4 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		658FA51B132F706F00CB59F4 /* minifire.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = minifire.icns; path = ../minifire.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +100,7 @@
 			children = (
 				658FA51B132F706F00CB59F4 /* minifire.icns */,
 				658FA503132F43EE00CB59F4 /* settings.png */,
-				658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */,
+				658FA4D9132F2F7900CB59F4 /* yuicompressor-2.4.7.jar */,
 				652482E2132E92EC009FA0A6 /* Minifire-Info.plist */,
 				652482E3132E92EC009FA0A6 /* InfoPlist.strings */,
 				652482E6132E92EC009FA0A6 /* Minifire-Prefix.pch */,
@@ -158,7 +158,7 @@
 			files = (
 				652482EB132E92EC009FA0A6 /* Credits.rtf in Resources */,
 				652482F1132E92EC009FA0A6 /* MainMenu.xib in Resources */,
-				658FA4EC132F348F00CB59F4 /* yuicompressor.jar in Resources */,
+				658FA4EC132F348F00CB59F4 /* yuicompressor-2.4.7.jar in Resources */,
 				658FA504132F43EE00CB59F4 /* settings.png in Resources */,
 				658FA51C132F706F00CB59F4 /* minifire.icns in Resources */,
 			);

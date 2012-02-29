@@ -38,7 +38,7 @@
     }
     else
     {
-        [fileEnding setStringValue:@".min"];
+        [fileEnding setStringValue:@"-min"];
         [self saveSettings];
     }
     
@@ -176,7 +176,7 @@
 		{
             YUICompressor = [[NSTask alloc] init];
             [YUICompressor setLaunchPath: @"/usr/bin/java"];
-            [YUICompressor setArguments:[NSArray arrayWithObjects:@"-jar",[[NSBundle mainBundle] pathForResource:@"yuicompressor" ofType:@"jar"],[arr objectAtIndex:i],@"-o",[self getOutputFilename:[arr objectAtIndex:i]],nil]];
+            [YUICompressor setArguments:[NSArray arrayWithObjects:@"-jar",[[NSBundle mainBundle] pathForResource:@"yuicompressor-2.4.7" ofType:@"jar"],[arr objectAtIndex:i],@"-o",[self getOutputFilename:[arr objectAtIndex:i]],nil]];
 			[YUICompressor launch];
             [YUICompressor waitUntilExit];
             [YUICompressor release];
