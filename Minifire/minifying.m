@@ -208,18 +208,17 @@
 
 
 
-- (BOOL)application:(NSApplication *)sender openFiles:(NSArray *)path
+- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
     [self saveSettings];
 
     bool combineFilesCheck = [[NSUserDefaults standardUserDefaults] boolForKey:@"combineFiles"];
     if (combineFilesCheck) {
-        [self combineFilesAndMinify:path];
+        [self combineFilesAndMinify:filenames];
     }
     else{
-        [self minifyFiles:path showSuccess:YES];
+        [self minifyFiles:filenames showSuccess:YES];
     }
-	return YES;
 }
 
 
@@ -243,10 +242,10 @@
     
 	
 	
-	[status setTextColor:[NSColor colorWithCalibratedRed:(205.0/255.0) 
-												   green:(205.0/255.0) 
-													blue:(205.0/255.0) 
-												   alpha:1]];
+	[status setTextColor:[NSColor colorWithCalibratedRed:(CGFloat)(205.0/255.0) 
+												   green:(CGFloat)(205.0/255.0) 
+													blue:(CGFloat)(205.0/255.0) 
+												   alpha:(CGFloat)1.0]];
 	
 	return YES;
 	
@@ -274,10 +273,10 @@
 	
     NSGradient* aGradient = [[[NSGradient alloc]
 							  initWithColorsAndLocations:[NSColor whiteColor], (CGFloat)0.0,
-							  [NSColor colorWithCalibratedRed:224 green:224 blue:224 alpha:0], (CGFloat)1,
+							  [NSColor colorWithCalibratedRed:(CGFloat)224.0 green:(CGFloat)224.0 blue:(CGFloat)224.0 alpha:(CGFloat)0.0], (CGFloat)1.0,
 							  nil] autorelease];
 	
-    [aGradient drawInBezierPath:clipShape angle:-90.0];
+    [aGradient drawInBezierPath:clipShape angle:(CGFloat)-90.0];
 }
 
 
@@ -290,18 +289,20 @@
 		NSArray *draggedFilenames = [[sender draggingPasteboard] propertyListForType:NSFilenamesPboardType];
 		if ([[[draggedFilenames objectAtIndex:0] pathExtension] isEqual:@"js"] ||
             [[[draggedFilenames objectAtIndex:0] pathExtension] isEqual:@"css"]){
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 			[[NSCursor dragCopyCursor] set];
-			[status setTextColor:[NSColor colorWithCalibratedRed:(115.0/255.0) 
-                                                           green:(130.0/255.0) 
-                                                            blue:(150.0/255.0) 
-                                                           alpha:1]];
+#endif
+			[status setTextColor:[NSColor colorWithCalibratedRed:(CGFloat)(115.0/255.0) 
+                                                           green:(CGFloat)(130.0/255.0) 
+                                                            blue:(CGFloat)(150.0/255.0) 
+                                                           alpha:(CGFloat)1.0]];
 		}
 		else{
 			[[NSCursor arrowCursor] set];
-			[status setTextColor:[NSColor colorWithCalibratedRed:(205.0/255.0) 
-														   green:(205.0/255.0) 
-															blue:(205.0/255.0) 
-														   alpha:1]];
+			[status setTextColor:[NSColor colorWithCalibratedRed:(CGFloat)(205.0/255.0) 
+														   green:(CGFloat)(205.0/255.0) 
+															blue:(CGFloat)(205.0/255.0) 
+														   alpha:(CGFloat)1.0]];
 			
 		}
 		
@@ -317,11 +318,13 @@
 
 - (void)draggingExited:(id <NSDraggingInfo>)sender
 {
-	[status setTextColor:[NSColor colorWithCalibratedRed:(205.0/255.0) 
-												   green:(205.0/255.0) 
-													blue:(205.0/255.0) 
-												   alpha:1]];
+	[status setTextColor:[NSColor colorWithCalibratedRed:(CGFloat)(205.0/255.0) 
+												   green:(CGFloat)(205.0/255.0) 
+													blue:(CGFloat)(205.0/255.0) 
+												   alpha:(CGFloat)1.0]];
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 	[[NSCursor dragCopyCursor] set];
+#endif
     
 }
 
@@ -330,8 +333,9 @@
     if ((NSDragOperationGeneric & [sender draggingSourceOperationMask]) 
 		== NSDragOperationGeneric)
     {
-        
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 		[[NSCursor dragCopyCursor] set];
+#endif
         
         return NSDragOperationGeneric;
     }
@@ -355,9 +359,8 @@
 }
 
 
-- (void)applicationWillTerminate:(NSApplication *)theApplication
+- (void)applicationWillTerminate:(NSNotification *)notification
 {
-    NSLog(@"i'm tired and i quit");   // x_x
     [self saveSettings];
 }
 
