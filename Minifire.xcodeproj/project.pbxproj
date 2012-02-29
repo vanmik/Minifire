@@ -3,28 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		652482DB132E92EC009FA0A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652482DA132E92EC009FA0A6 /* Cocoa.framework */; };
-		652482E5132E92EC009FA0A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 652482E3132E92EC009FA0A6 /* InfoPlist.strings */; };
 		652482E8132E92EC009FA0A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 652482E7132E92EC009FA0A6 /* main.m */; };
 		652482EB132E92EC009FA0A6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 652482E9132E92EC009FA0A6 /* Credits.rtf */; };
 		652482F1132E92EC009FA0A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652482EF132E92EC009FA0A6 /* MainMenu.xib */; };
 		652482FF132E955C009FA0A6 /* minifying.m in Sources */ = {isa = PBXBuildFile; fileRef = 652482FE132E955C009FA0A6 /* minifying.m */; };
-		658FA4DA132F2F7900CB59F4 /* yuicompressor.jar in Frameworks */ = {isa = PBXBuildFile; fileRef = 658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */; };
-		658FA4EC132F348F00CB59F4 /* yuicompressor.jar in Resources */ = {isa = PBXBuildFile; fileRef = 658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */; };
+		658FA4EC132F348F00CB59F4 /* yuicompressor-2.4.7.jar in Resources */ = {isa = PBXBuildFile; fileRef = 658FA4D9132F2F7900CB59F4 /* yuicompressor-2.4.7.jar */; };
 		658FA504132F43EE00CB59F4 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 658FA503132F43EE00CB59F4 /* settings.png */; };
 		658FA51C132F706F00CB59F4 /* minifire.icns in Resources */ = {isa = PBXBuildFile; fileRef = 658FA51B132F706F00CB59F4 /* minifire.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		652482D6132E92EC009FA0A6 /* Minifire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minifire.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		652482DA132E92EC009FA0A6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		652482DD132E92EC009FA0A6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		652482DE132E92EC009FA0A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		652482DF132E92EC009FA0A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		652482DA132E92EC009FA0A6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		652482DD132E92EC009FA0A6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		652482DE132E92EC009FA0A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		652482DF132E92EC009FA0A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		652482E2132E92EC009FA0A6 /* Minifire-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Minifire-Info.plist"; sourceTree = "<group>"; };
 		652482E4132E92EC009FA0A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		652482E6132E92EC009FA0A6 /* Minifire-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Minifire-Prefix.pch"; sourceTree = "<group>"; };
@@ -33,8 +31,7 @@
 		652482F0132E92EC009FA0A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		652482FD132E955C009FA0A6 /* minifying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minifying.h; sourceTree = "<group>"; };
 		652482FE132E955C009FA0A6 /* minifying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = minifying.m; sourceTree = "<group>"; };
-		658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = yuicompressor.jar; sourceTree = "<group>"; };
-		658FA4E0132F2FEB00CB59F4 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		658FA4D9132F2F7900CB59F4 /* yuicompressor-2.4.7.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = "yuicompressor-2.4.7.jar"; sourceTree = "<group>"; };
 		658FA503132F43EE00CB59F4 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		658FA51B132F706F00CB59F4 /* minifire.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = minifire.icns; path = ../minifire.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,7 +42,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				652482DB132E92EC009FA0A6 /* Cocoa.framework in Frameworks */,
-				658FA4DA132F2F7900CB59F4 /* yuicompressor.jar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				652482DA132E92EC009FA0A6 /* Cocoa.framework */,
-				658FA4E0132F2FEB00CB59F4 /* CoreFoundation.framework */,
 				652482DC132E92EC009FA0A6 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -105,7 +100,7 @@
 			children = (
 				658FA51B132F706F00CB59F4 /* minifire.icns */,
 				658FA503132F43EE00CB59F4 /* settings.png */,
-				658FA4D9132F2F7900CB59F4 /* yuicompressor.jar */,
+				658FA4D9132F2F7900CB59F4 /* yuicompressor-2.4.7.jar */,
 				652482E2132E92EC009FA0A6 /* Minifire-Info.plist */,
 				652482E3132E92EC009FA0A6 /* InfoPlist.strings */,
 				652482E6132E92EC009FA0A6 /* Minifire-Prefix.pch */,
@@ -141,8 +136,7 @@
 		652482CD132E92EB009FA0A6 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 652482D0132E92EB009FA0A6 /* Build configuration list for PBXProject "Minifire" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -162,10 +156,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				652482E5132E92EC009FA0A6 /* InfoPlist.strings in Resources */,
 				652482EB132E92EC009FA0A6 /* Credits.rtf in Resources */,
 				652482F1132E92EC009FA0A6 /* MainMenu.xib in Resources */,
-				658FA4EC132F348F00CB59F4 /* yuicompressor.jar in Resources */,
+				658FA4EC132F348F00CB59F4 /* yuicompressor-2.4.7.jar in Resources */,
 				658FA504132F43EE00CB59F4 /* settings.png in Resources */,
 				658FA51C132F706F00CB59F4 /* minifire.icns in Resources */,
 			);
@@ -221,13 +214,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
@@ -236,12 +229,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				SDKROOT = "";
 			};
 			name = Release;
 		};
@@ -255,7 +248,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minifire/Minifire-Prefix.pch";
 				INFOPLIST_FILE = "Minifire/Minifire-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -271,7 +264,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Minifire/Minifire-Prefix.pch";
 				INFOPLIST_FILE = "Minifire/Minifire-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
